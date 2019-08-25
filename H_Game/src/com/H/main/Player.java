@@ -18,17 +18,17 @@ public class Player extends GameObject{
  	}
 
 	public Rectangle getBounds() {
-		return new Rectangle(x, y, 32, 32);
+		return new Rectangle((int)x, (int)y, 32, 32);
 	}
 	
 	public void tick() {
 		x += velX;
 		y += velY;
 		
-		x = Game.clamp(x,  0, Game.WIDTH - 38);
-		y = Game.clamp(y, 0, Game.HEIGHT - 62);
+		x = Game.clamp((int)x,  0, Game.WIDTH - 38);
+		y = Game.clamp((int)y, 0, Game.HEIGHT - 62);
 		
-		handler.addObject(new Trail(x, y, ID.Trail, Color.WHITE, 32, 32, 0.04f, handler));
+		handler.addObject(new Trail((int)x, (int)y, ID.Trail, Color.WHITE, 32, 32, 0.04f, handler));
 		
 		collision();
 	}
@@ -37,7 +37,7 @@ public class Player extends GameObject{
 		for(int i = 0; i < handler.object.size(); i++) {
 			GameObject tempObject = handler.object.get(i);
 			
-			if(tempObject.getId() == ID.Enemy || tempObject.getId() == ID.FastEnemy) {   
+			if(tempObject.getId() == ID.Enemy || tempObject.getId() == ID.FastEnemy || tempObject.getId() == ID.SmartEnemy ) {   
 				
 				if(getBounds().intersects(tempObject.getBounds())) {
 					//collision code
@@ -54,7 +54,7 @@ public class Player extends GameObject{
 //		g2d.draw(getBounds());
 		
 		g.setColor(Color.white);
-		g.fillRect(x, y, 32, 32);
+		g.fillRect((int)x, (int)y, 32, 32);
 	}
 	
 }

@@ -23,6 +23,22 @@ public class Handler {
 		}
 	}
 	
+	public void clearEnemeys() {
+		
+		while(object.size() != 1) {
+			
+			object.remove(1);
+			
+//			GameObject tempObject = object.get(i);
+//			if(object.get(i).getId() == ID.Player) {
+//				object.clear();
+//				addObject(new Player((int)tempObject.getX(),(int)tempObject.getY(), ID.Player, this));
+//			}
+			
+			
+		}
+	}
+	
 	public void addObject(GameObject object) {
 		this.object.add(object);
 	}
