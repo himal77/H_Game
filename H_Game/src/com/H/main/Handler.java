@@ -17,25 +17,21 @@ public class Handler {
 	
 	public void render(Graphics g) {
 		for(int i = 0; i < object.size(); i++) {
-			GameObject tempObject = object.get(i);
-			
+			GameObject tempObject = object.get(i);	
 			tempObject.render(g);
 		}
 	}
 	
 	public void clearEnemeys() {
-		
-		while(object.size() != 1) {
-			
-			object.remove(1);
-			
-//			GameObject tempObject = object.get(i);
-//			if(object.get(i).getId() == ID.Player) {
-//				object.clear();
-//				addObject(new Player((int)tempObject.getX(),(int)tempObject.getY(), ID.Player, this));
-//			}
-			
-			
+			for(int i = 0; i < object.size(); i++) {
+				
+				GameObject tempObject = object.get(i);
+				
+				if(tempObject.getId() == ID.Player) {
+					object.clear();
+					if(Game.gameState != Game.STATE.End )
+					addObject(new Player((int)tempObject.getX(),(int)tempObject.getY(), ID.Player, this));
+			}
 		}
 	}
 	
